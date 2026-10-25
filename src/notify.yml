@@ -1,0 +1,23 @@
+# Installed by gitlog.svg (https://github.com/__OWNER__/gitlog.svg)
+# Pings the gitlog.svg repo after each push so it refreshes the stats card.
+name: gitlog notify
+
+on:
+  push:
+    branches: [__BRANCH__]
+
+permissions: {}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping gitlog.svg
+        env:
+          GITLOG_TOKEN: ${{ secrets.GITLOG_TOKEN }}
+        run: |
+          curl --fail --silent --show-error -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GITLOG_TOKEN" \
+            https://api.github.com/repos/__OWNER__/gitlog.svg/dispatches \
+            -d '{"event_type":"commit-pushed"}'

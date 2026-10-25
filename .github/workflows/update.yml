@@ -1,0 +1,58 @@
+name: gitlog
+
+on:
+  repository_dispatch:
+    types: [commit-pushed]
+
+  # Safety net in case a dispatch event is lost
+  schedule:
+    - cron: "17 * * * *"
+
+  workflow_dispatch:
+
+  push:
+    branches: [main]
+    paths: ["src/gitlog.py"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gitlog
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # GitHub takes a while to recompute stats after a push
+      - name: Wait for GitHub to refresh its statistics
+        if: github.event_name == 'repository_dispatch'
+        run: sleep 45
+
+      - name: Generate gitlog.svg
+        env:
+          GH_TOKEN: ${{ secrets.GITLOG_READ_TOKEN }}
+          GH_USER: joaopssx
+          INCLUDE_FORKS: "false"
+        run: python src/gitlog.py
+
+      - name: Commit changes
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/gitlog.svg assets/stats.json
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "chore: update gitlog.svg"
+            git push
+          fi

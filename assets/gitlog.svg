@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="250" viewBox="0 0 820 250" role="img" aria-label="Git statistics for joaopssx">
+  <title>Git statistics for joaopssx</title>
+  <style>
+    .mono { font-family: 'JetBrains Mono', 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; }
+    .muted { fill: #8b949e; font-size: 13px; }
+    .label { fill: #8b949e; font-size: 13px; letter-spacing: 1px; }
+    .num   { font-size: 34px; font-weight: 700; }
+    .prompt { fill: #e6edf3; font-size: 14px; }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#161b22"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="1" y="1" width="818" height="248" rx="12" fill="url(#bg)" stroke="#30363d" stroke-width="2"/>
+  <rect x="1" y="1" width="818" height="36" rx="12" fill="#161b22"/>
+  <rect x="1" y="24" width="818" height="13" fill="#161b22"/>
+  <line x1="1" y1="37" x2="819" y2="37" stroke="#30363d"/>
+  <circle cx="24" cy="19" r="6" fill="#ff5f56"/>
+  <circle cx="44" cy="19" r="6" fill="#ffbd2e"/>
+  <circle cx="64" cy="19" r="6" fill="#27c93f"/>
+  <text x="410" y="24" text-anchor="middle" class="mono muted">joaopssx — gitlog.svg</text>
+
+  <text x="30" y="68" class="mono prompt"><tspan fill="#3fb950">$</tspan> git log --author="joaopssx" --shortstat --all-repos</text>
+
+  <text x="30" y="112" class="mono label">LINES ADDED</text>
+  <text x="30" y="152" class="mono num" fill="#3fb950">+184,320</text>
+
+  <text x="300" y="112" class="mono label">LINES REMOVED</text>
+  <text x="300" y="152" class="mono num" fill="#f85149">-61,754</text>
+
+  <text x="570" y="112" class="mono label">COMMITS</text>
+  <text x="570" y="152" class="mono num" fill="#58a6ff">1,482</text>
+
+  <clipPath id="barclip"><rect x="30" y="172" width="760" height="8" rx="4"/></clipPath>
+  <g clip-path="url(#barclip)">
+    <rect x="30" y="172" width="760" height="8" fill="#21262d"/>
+    <rect x="30" y="172" width="569" height="8" fill="#3fb950"/>
+    <rect x="599" y="172" width="191" height="8" fill="#f85149"/>
+  </g>
+
+  <line x1="30" y1="200" x2="790" y2="200" stroke="#21262d"/>
+  <text x="30" y="228" class="mono muted">net +122,566 lines  ·  42 repositories</text>
+  <text x="790" y="228" text-anchor="end" class="mono muted">updated 2026-10-25 18:05 UTC</text>
+</svg>
